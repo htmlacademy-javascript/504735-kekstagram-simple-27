@@ -5,7 +5,7 @@ function getRandomNumbers(from, to) {
     if (from < to) {
       return Math.floor(Math.random() * (to - from + 1)) + from;
     } else {
-      return console.log('Cтартовое значение не может быть меньше или равно конечному :(. Попробуйте еще раз!');
+      return NaN;
     }
   } else {
     return NaN;
