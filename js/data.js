@@ -42,7 +42,7 @@ const photos = () => {
   const unicId = createArrayFixLength(NUMBER_OF_OBJECTS);
   const unicNumberOfPhoto = createArrayFixLength(NUMBER_OF_OBJECTS);
   for(let i = 0; i < NUMBER_OF_OBJECTS; i++) {
-    arrayOfObjects.push(createPhoto(unicId[i],unicNumberOfPhoto[i]));
+    arrayOfObjects.push(createPhoto(unicId[i], unicNumberOfPhoto[i]));
   }
   return arrayOfObjects;
 };
