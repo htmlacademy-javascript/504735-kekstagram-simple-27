@@ -19,4 +19,6 @@ const getRandomNumber = (from, to) => {
 //Создание индекса массива описаний фотографий.
 const getArrayElement = () => getRandomNumber(0, descriptionPhoto.length - 1);
 
-export {getArrayElement, getRandomNumber};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export {getArrayElement, getRandomNumber, isEscapeKey};
