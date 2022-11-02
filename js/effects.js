@@ -1,51 +1,51 @@
 const EFFECTS = [
-    { 
-      name: 'none',
-      min: 0,
-      max: 100,
-      step: 1,
-      start: 100,
-    },
-    { 
-      name: 'chrome',
-      style: 'grayscale',
-      min: 0,
-      max: 1,
-      step: 0.1,
-      unit : '',
-    },
-    {
-      name: 'sepia',
-      style: 'sepia',
-      min: 0,
-      max: 1,
-      step: 0.1,
-      unit : '',
-    },
-    {
-      name: 'marvin',
-      style: 'invert',
-      min: 0,
-      max: 100,
-      step: 1,
-      unit : '%',
-    },
-    { 
-      name: 'phobos',
-      style: 'blur',
-      min: 0,
-      max: 3,
-      step: 0.1,
-      unit : 'px',
-    },
-    {
-      name: 'heat',
-      style: 'brightness',
-      min: 1,
-      max: 3,
-      step: 0.1,
-      unit : '',
-    }
+  {
+    name: 'none',
+    min: 0,
+    max: 100,
+    step: 1,
+    start: 100,
+  },
+  {
+    name: 'chrome',
+    style: 'grayscale',
+    min: 0,
+    max: 1,
+    step: 0.1,
+    unit : '',
+  },
+  {
+    name: 'sepia',
+    style: 'sepia',
+    min: 0,
+    max: 1,
+    step: 0.1,
+    unit : '',
+  },
+  {
+    name: 'marvin',
+    style: 'invert',
+    min: 0,
+    max: 100,
+    step: 1,
+    unit : '%',
+  },
+  {
+    name: 'phobos',
+    style: 'blur',
+    min: 0,
+    max: 3,
+    step: 0.1,
+    unit : 'px',
+  },
+  {
+    name: 'heat',
+    style: 'brightness',
+    min: 1,
+    max: 3,
+    step: 0.1,
+    unit : '',
+  }
 ];
 
 // Форма
@@ -58,7 +58,7 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const effectLevelValue = document.querySelector('.effect-level__value');
 
 const DEFAULT_EFFECT = EFFECTS[0];
-let chosenEffect =  DEFAULT_EFFECT;
+let chosenEffect = DEFAULT_EFFECT;
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
@@ -81,9 +81,9 @@ const updateSlider = () => {
 const onFormChange = (evt) => {
   if(!evt.target.classList.contains('effects__radio')) {
     return;
-  } 
+  }
   chosenEffect = EFFECTS.find((effect) => effect.name === evt.target.value);
-  updateSlider();  
+  updateSlider();
 };
 
 const onSliderUpdate = () => {
@@ -97,12 +97,12 @@ const onSliderUpdate = () => {
   imgDefaultElement.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
   imgDefaultElement.classList.add(`effects__preview--${chosenEffect.name}`);
   effectLevelValue.value = sliderValue;
-}
+};
 
 const resetEffects = () => {
   chosenEffect = DEFAULT_EFFECT;
   updateSlider();
-}
+};
 
 noUiSlider.create(sliderElement, {
   range: {
