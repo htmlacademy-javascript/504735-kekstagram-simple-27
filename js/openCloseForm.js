@@ -1,12 +1,15 @@
 import {isEscapeKey} from './utils.js';
+import {clearScaleValue} from './scale.js';
+import {resetEffects} from './effects.js';
 
-const openForm = document.querySelector('#upload-file');
-const formRedactImage = document.querySelector('.img-upload__overlay');
-const body = document.querySelector('body');
-const closeFormBtn = document.querySelector('#upload-cancel');
-const imgUploadForm = document.querySelector('.img-upload__form');
+const openFormElement = document.querySelector('#upload-file');
+const formEditImageElement = document.querySelector('.img-upload__overlay');
+const bodyElement = document.querySelector('body');
+const closeFormElement = document.querySelector('#upload-cancel');
+const imgUploadElement = document.querySelector('.img-upload__form');
 
-const onClickBtnClose = () => closeFormBtn.addEventListener('click', (evt) => {
+
+const onClickBtnClose = () => closeFormElement.addEventListener('click', (evt) => {
   evt.preventDefault();
   closeForm();
 });
@@ -18,20 +21,24 @@ const onClickEscBtn = () => document.addEventListener('keydown', (evt) => {
   }
 });
 
-openForm.addEventListener('change', () => {
-  formRedactImage.classList.remove('hidden');
-  body.classList.add('modal-open');
+const openForm = () => openFormElement.addEventListener('change', () => {
+  formEditImageElement.classList.remove('hidden');
+  bodyElement.classList.add('modal-open');
 
   document.addEventListener('keydown', onClickEscBtn);
-  document.addEventListener('click', onClickBtnClose);
+  closeFormElement.addEventListener('click', onClickBtnClose);
 });
 
-// Такой способ объявления функции так как мы ее вызываем раньше чем объявили!
+// Способ определения (не стрелочная) обусловлен порядком вызова функций.
 function closeForm() {
-  formRedactImage.classList.add('hidden');
-  body.classList.remove('modal-open');
-  imgUploadForm.reset();
+  formEditImageElement.classList.add('hidden');
+  bodyElement.classList.remove('modal-open');
+  imgUploadElement.reset();
+  clearScaleValue();
+  resetEffects();
 
   document.removeEventListener('keydown', onClickEscBtn);
-  document.removeEventListener('click', onClickBtnClose);
+  closeFormElement.removeEventListener('click', onClickBtnClose);
 }
+
+export {openForm, closeForm, onClickBtnClose, onClickEscBtn};
