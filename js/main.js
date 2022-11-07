@@ -1,15 +1,17 @@
-import {photos} from './data.js';
 import './effects.js';
-// import {editSize} from './scale.js';
 import './scale.js';
-import './upload.js';
-import './utils.js';
-import './thumbnails.js';
+import {setUserFormSubmit} from './upload.js';
+import {getData} from './api.js';
+import {thumbnailsList} from './thumbnails.js';
 import {openForm, closeForm, onClickBtnClose, onClickEscBtn} from './openCloseForm.js';
 
-photos();
-onClickEscBtn();
-onClickBtnClose();
 openForm();
 closeForm();
-// editSize();
+onClickEscBtn();
+onClickBtnClose();
+
+getData((photos) => {
+  thumbnailsList(photos);
+});
+setUserFormSubmit(closeForm);
+

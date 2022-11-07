@@ -48,6 +48,8 @@ const EFFECTS = [
   }
 ];
 
+const DEFAULT_EFFECT = EFFECTS[0];
+
 // Форма
 const formElement = document.querySelector('.img-upload__form');
 //Картинка предварительного просмотра.
@@ -57,7 +59,6 @@ const sliderElement = document.querySelector('.effect-level__slider');
 //Значение уровня эффекта
 const effectLevelValue = document.querySelector('.effect-level__value');
 
-const DEFAULT_EFFECT = EFFECTS[0];
 let chosenEffect = DEFAULT_EFFECT;
 
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
