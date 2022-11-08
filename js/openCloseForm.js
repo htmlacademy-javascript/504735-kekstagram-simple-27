@@ -14,20 +14,20 @@ const onClickBtnClose = () => closeFormElement.addEventListener('click', (evt) =
   closeForm();
 });
 
-const onClickEscBtn = () => document.addEventListener('keydown', (evt) => {
+const onClickEscBtn = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeForm();
   }
-});
+};
 
-const openForm = () => openFormElement.addEventListener('change', () => {
+const openForm = () => {
   formEditImageElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
 
   document.addEventListener('keydown', onClickEscBtn);
   closeFormElement.addEventListener('click', onClickBtnClose);
-});
+};
 
 // Способ определения (не стрелочная) обусловлен порядком вызова функций.
 function closeForm() {
@@ -40,5 +40,8 @@ function closeForm() {
   document.removeEventListener('keydown', onClickEscBtn);
   closeFormElement.removeEventListener('click', onClickBtnClose);
 }
+
+openFormElement.addEventListener('change', openForm);
+closeFormElement.addEventListener('click', closeForm);
 
 export {openForm, closeForm, onClickBtnClose, onClickEscBtn};
