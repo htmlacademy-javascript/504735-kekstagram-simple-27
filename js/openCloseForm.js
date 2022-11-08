@@ -8,6 +8,7 @@ const bodyElement = document.querySelector('body');
 const closeFormElement = document.querySelector('#upload-cancel');
 const imgUploadElement = document.querySelector('.img-upload__form');
 
+const hasHiddenPopup = bodyElement.classList.contains('.error');
 
 const onClickBtnClose = () => closeFormElement.addEventListener('click', (evt) => {
   evt.preventDefault();
@@ -15,7 +16,7 @@ const onClickBtnClose = () => closeFormElement.addEventListener('click', (evt) =
 });
 
 const onClickEscBtn = (evt) => {
-  if (isEscapeKey(evt)) {
+  if (isEscapeKey(evt) && !hasHiddenPopup) {
     evt.preventDefault();
     closeForm();
   }
@@ -29,7 +30,6 @@ const openForm = () => {
   closeFormElement.addEventListener('click', onClickBtnClose);
 };
 
-// Способ определения (не стрелочная) обусловлен порядком вызова функций.
 function closeForm() {
   formEditImageElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');

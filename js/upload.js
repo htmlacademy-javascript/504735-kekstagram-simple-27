@@ -1,4 +1,4 @@
-import {modalOpenSuccess, modalOpenError} from './utils.js';
+import {modalOpenSuccess, modalOpenError} from './modals.js';
 import {sendData} from './api.js';
 
 // Форма загрузки фотографии.
