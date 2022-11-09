@@ -8,17 +8,18 @@ const bodyElement = document.querySelector('body');
 const closeFormElement = document.querySelector('#upload-cancel');
 const imgUploadElement = document.querySelector('.img-upload__form');
 
-const hasHiddenPopup = bodyElement.classList.contains('.error');
-
-const onClickBtnClose = () => closeFormElement.addEventListener('click', (evt) => {
+const onClickBtnClose = (evt) => {
   evt.preventDefault();
   closeForm();
-});
+};
 
 const onClickEscBtn = (evt) => {
-  if (isEscapeKey(evt) && !hasHiddenPopup) {
+  if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeForm();
+    const hasHiddenPopup = document.querySelector('.error');
+    if(!hasHiddenPopup){
+      closeForm();
+    }
   }
 };
 
@@ -42,6 +43,5 @@ function closeForm() {
 }
 
 openFormElement.addEventListener('change', openForm);
-closeFormElement.addEventListener('click', closeForm);
 
 export {openForm, closeForm, onClickBtnClose, onClickEscBtn};

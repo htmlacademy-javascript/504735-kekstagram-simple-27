@@ -1,4 +1,4 @@
-import {showAlert} from './utils.js';
+import {showAlert} from './modalWindows.js';
 
 const getData = (onSuccess) => {
   fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
@@ -6,13 +6,13 @@ const getData = (onSuccess) => {
     .then((photos) => {
       onSuccess(photos);
     }).catch(() => {
-      showAlert('Не удалось загрузить фото. Попробуйте ещё раз!');
+      showAlert();
     });
 };
 
 const sendData = (onSuccess, onFail, body) => {
   fetch(
-    'https://27.javascript.pages.academ/kekstagram-simple',
+    'https://27.javascript.pages.academy/kekstagram-simple',
     {
       method: 'POST',
       body,
