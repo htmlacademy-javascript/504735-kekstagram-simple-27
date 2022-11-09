@@ -1198,7 +1198,8 @@ main {
   */
 
 .error,
-.success {
+.success,
+.error-upload {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -1214,7 +1215,8 @@ main {
 }
 
 .error__inner,
-.success__inner {
+.success__inner,
+.error-upload__inner {
   position: relative;
   width: 600px;
   padding: 50px 20px;
@@ -1236,10 +1238,16 @@ main {
   border-radius: 10px;
 }
 
+.error-upload__inner {
+  padding-top: 50px;
+  line-height: 2em;
+}
+
 .success__inner {
   padding: 100px 20px;
   padding-bottom: 75px;
 }
+
 
 .error__title {
   position: relative;
