@@ -1,17 +1,12 @@
 import './effects.js';
 import './scale.js';
+import './utils.js';
 import {setUserFormSubmit} from './upload.js';
 import {getData} from './api.js';
 import {thumbnailsList} from './thumbnails.js';
-import {openForm, closeForm, onClickBtnClose, onClickEscBtn} from './openCloseForm.js';
-
-openForm();
-closeForm();
-onClickEscBtn();
-onClickBtnClose();
+import {closeForm} from './openCloseForm.js';
 
 getData((photos) => {
   thumbnailsList(photos);
 });
 setUserFormSubmit(closeForm);
-

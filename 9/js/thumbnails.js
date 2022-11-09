@@ -1,11 +1,8 @@
-// import {photos} from './data.js';
-
 const userPhotosList = document.querySelector('.pictures');
 const userPictureTemplate = document.querySelector('#picture')
   .content
   .querySelector('.picture');
 
-// const userPhotos = photos();
 const photosListFragment = document.createDocumentFragment();
 
 const thumbnailsList = (photo) => {
