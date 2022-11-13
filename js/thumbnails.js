@@ -4,8 +4,9 @@ const userPictureTemplate = document.querySelector('#picture')
   .querySelector('.picture');
 
 const photosListFragment = document.createDocumentFragment();
+const imgFiltersElement = document.querySelector('.img-filters');
 
-const thumbnailsList = (photo) => {
+const createThumbnailsList = (photo) => {
   photo.forEach(({url, comments, likes}) => {
     const photoElement = userPictureTemplate.cloneNode(true);
     photoElement.querySelector('.picture__img').src = url;
@@ -13,7 +14,9 @@ const thumbnailsList = (photo) => {
     photoElement.querySelector('.picture__likes').textContent = likes;
     photosListFragment.appendChild(photoElement);
   });
+  userPhotosList.querySelectorAll('.picture').forEach((element) => {element.remove();});
   userPhotosList.appendChild(photosListFragment);
+  imgFiltersElement.classList.remove('img-filters--inactive');
 };
 
-export {thumbnailsList};
+export {createThumbnailsList};

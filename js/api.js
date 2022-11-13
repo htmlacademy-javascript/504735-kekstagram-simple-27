@@ -1,4 +1,4 @@
-import {showAlert} from './modalWindows.js';
+import {showAlert} from './modal-windows.js';
 
 const getData = (onSuccess) => {
   fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
