@@ -59,7 +59,7 @@ const sliderElement = document.querySelector('.effect-level__slider');
 //Блок для слайдера.
 const sliderBlockElement = document.querySelector('.img-upload__effect-level');
 //Значение уровня эффекта
-const effectLevelValue = document.querySelector('.effect-level__value');
+const effectLevelValueElement = document.querySelector('.effect-level__value');
 
 let chosenEffect = DEFAULT_EFFECT;
 
@@ -92,14 +92,14 @@ const onFormChange = (evt) => {
 const onSliderUpdate = () => {
   imgDefaultElement.style.filter = 'none';
   imgDefaultElement.className = '';
-  effectLevelValue.value = '';
+  effectLevelValueElement.value = '';
   if(isDefault()){
     return;
   }
   const sliderValue = sliderElement.noUiSlider.get();
   imgDefaultElement.style.filter = `${chosenEffect.style}(${sliderValue}${chosenEffect.unit})`;
   imgDefaultElement.classList.add(`effects__preview--${chosenEffect.name}`);
-  effectLevelValue.value = sliderValue;
+  effectLevelValueElement.value = sliderValue;
 };
 
 const resetEffects = () => {

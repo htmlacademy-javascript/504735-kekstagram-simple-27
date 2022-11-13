@@ -1,3 +1,6 @@
+const MAX_SCALE_RANGE = 100;
+const MIN_SCALE_RANGE = 25;
+
 //Кнопка уменьшения фотографии
 const makeSmallerElement = document.querySelector('.scale__control--smaller');
 //Кнопка увеличения фотографии
@@ -6,9 +9,6 @@ const makeBiggerElement = document.querySelector('.scale__control--bigger');
 const valueElement = document.querySelector('.scale__control--value');
 //Картинка по умолчанию
 const imgDefaultElement = document.querySelector('.img-upload__preview');
-
-const MAX_SCALE_RANGE = 100;
-const MIN_SCALE_RANGE = 25;
 
 let sizeValue = 100;
 
