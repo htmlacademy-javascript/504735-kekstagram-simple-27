@@ -56,6 +56,8 @@ const formElement = document.querySelector('.img-upload__form');
 const imgDefaultElement = document.querySelector('.img-upload__preview img');
 // Слайдер.
 const sliderElement = document.querySelector('.effect-level__slider');
+//Блок для слайдера.
+const sliderBlockElement = document.querySelector('.img-upload__effect-level');
 //Значение уровня эффекта
 const effectLevelValue = document.querySelector('.effect-level__value');
 
@@ -64,7 +66,7 @@ let chosenEffect = DEFAULT_EFFECT;
 const isDefault = () => chosenEffect === DEFAULT_EFFECT;
 
 const updateSlider = () => {
-  sliderElement.classList.remove('hidden');
+  sliderBlockElement.classList.remove('hidden');
   sliderElement.noUiSlider.updateOptions({
     range: {
       min: chosenEffect.min,
@@ -75,7 +77,7 @@ const updateSlider = () => {
   });
 
   if(isDefault()) {
-    sliderElement.classList.add('hidden');
+    sliderBlockElement.classList.add('hidden');
   }
 };
 
