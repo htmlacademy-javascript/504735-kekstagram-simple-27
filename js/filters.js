@@ -18,14 +18,14 @@ const compareThumbnails = (photoA, photoB) => {
   return rankB - rankA;
 };
 
-const setFilters = (photos, createThumbnailsList) => {
+const initFilterListeners = (photos, showThumbnails) => {
   defaultFilterButton.addEventListener('click', (evt) => {
-    createThumbnailsList(photos);
+    showThumbnails(photos);
     setActiveFilter(evt.target);
   });
 
   randomFilterButton.addEventListener('click', (evt) => {
-    createThumbnailsList(photos
+    showThumbnails(photos
       .slice()
       .sort(shuffleThumbnails)
       .slice(0, NUMBER_OF_FOTOS));
@@ -33,11 +33,11 @@ const setFilters = (photos, createThumbnailsList) => {
   });
 
   discussedFilterButton.addEventListener('click', (evt) => {
-    createThumbnailsList(photos
+    showThumbnails(photos
       .slice()
       .sort(compareThumbnails));
     setActiveFilter(evt.target);
   });
 };
 
-export {setFilters};
+export {initFilterListeners};

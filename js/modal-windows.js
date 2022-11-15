@@ -26,62 +26,62 @@ const showAlert = () => {
 };
 
 //Функция закрытия сообщения о успешной отправке по ESC
-const onPopupSuccessClose = (evt) => {
+const onEscClickClosePopupSuccess = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    modalCloseSuccess();
+    closeModalSuccess();
   }
 };
 
 //Функция закрытия окна по клику на произвольную область
-const onClickEmptyAreaSucces = (evt) => {
+const onEmptyAreaClickSucces = (evt) => {
   if(evt.target.matches('.success')) {
-    modalCloseSuccess();
+    closeModalSuccess();
   }
 };
 
 //Функция открытия модального окна при успешной загрузке
-function modalOpenSuccess() {
+const openModalSuccess = () => {
   bodyElement.appendChild(successModalElement);
-  document.addEventListener('click', onClickEmptyAreaSucces);
-  document.addEventListener('keydown', onPopupSuccessClose);
-  succesCloseButton.addEventListener('click', modalCloseSuccess);
-}
+  document.addEventListener('click', onEmptyAreaClickSucces);
+  document.addEventListener('keydown', onEscClickClosePopupSuccess);
+  succesCloseButton.addEventListener('click', closeModalSuccess);
+};
 
 // Функция закрытия модального окна успешной загрузки
-function modalCloseSuccess() {
+function closeModalSuccess() {
   successModalElement.remove();
-  document.removeEventListener('keydown', onPopupSuccessClose);
+  document.removeEventListener('keydown', onEscClickClosePopupSuccess);
 }
 
 //Функция закрытия окна по клику на произвольную область
-const onClickEmptyAreaError = (evt) => {
+const onEmptyAreaClickError = (evt) => {
   if(evt.target.matches('.error')) {
-    modalCloseError();
+    closeModalError();
   }
 };
 
 //Функция закрытия модального окна при ошибке загрузки
-const onPopupErrorClose = (evt) => {
+const onEscClickClosePopupError = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    modalCloseError();
+    closeModalError();
   }
 };
 
 //Функция открытия модального окна при ошибке при загрузки
-function modalOpenError() {
+const openModalError = () => {
   bodyElement.appendChild(errorModalElement);
   bodyElement.classList.add('modal-open');
-  document.addEventListener('click', onClickEmptyAreaError);
-  document.addEventListener('keydown', onPopupErrorClose);
-  errorCloseButton.addEventListener('click', modalCloseError);
-}
+  document.addEventListener('click', onEmptyAreaClickError);
+  document.addEventListener('keydown', onEscClickClosePopupError);
+  errorCloseButton.addEventListener('click', closeModalError);
+};
 
 //Функция закрытия модального окна при ошибке при загрузки
-function modalCloseError() {
+function closeModalError() {
   errorModalElement.remove();
-  document.removeEventListener('keydown', onPopupErrorClose);
+  document.removeEventListener('keydown', onEscClickClosePopupError);
 }
 
-export {modalOpenSuccess, modalOpenError, showAlert};
+export {openModalSuccess, openModalError, showAlert};

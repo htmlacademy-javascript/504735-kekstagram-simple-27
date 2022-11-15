@@ -1,4 +1,4 @@
-import {modalOpenSuccess, modalOpenError} from './modal-windows.js';
+import {openModalSuccess, openModalError} from './modal-windows.js';
 import {sendData} from './api.js';
 
 // Форма загрузки фотографии.
@@ -18,7 +18,7 @@ const unblockSubmitButton = () => {
   submitButton.textContent = 'Сохранить';
 };
 
-const setUserFormSubmit = (onSuccess) => {
+const initListenerUserFormSubmit = (onSuccess) => {
   imgUploadElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
     blockSubmitButton();
@@ -26,15 +26,15 @@ const setUserFormSubmit = (onSuccess) => {
       () => {
         onSuccess();
         unblockSubmitButton();
-        modalOpenSuccess();
+        openModalSuccess();
       },
       () => {
         unblockSubmitButton();
-        modalOpenError();
+        openModalError();
       },
       new FormData(evt.target),
     );
   });
 };
 
-export {setUserFormSubmit};
+export {initListenerUserFormSubmit};
