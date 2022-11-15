@@ -1,5 +1,5 @@
 import {isEscapeKey} from './utils.js';
-import {clearScaleValue} from './scale.js';
+import {setDefaultValue} from './scale.js';
 import {resetEffects} from './effects.js';
 
 const openFormElement = document.querySelector('#upload-file');
@@ -8,12 +8,12 @@ const bodyElement = document.querySelector('body');
 const closeFormElement = document.querySelector('#upload-cancel');
 const imgUploadElement = document.querySelector('.img-upload__form');
 
-const onClickBtnClose = (evt) => {
+const onBtnCloseClick = (evt) => {
   evt.preventDefault();
   closeForm();
 };
 
-const onClickEscBtn = (evt) => {
+const onBtnEscClick = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     const hasHiddenPopup = document.querySelector('.error');
@@ -27,21 +27,21 @@ const openForm = () => {
   formEditImageElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
 
-  document.addEventListener('keydown', onClickEscBtn);
-  closeFormElement.addEventListener('click', onClickBtnClose);
+  document.addEventListener('keydown', onBtnEscClick);
+  closeFormElement.addEventListener('click', onBtnCloseClick);
 };
 
 function closeForm() {
   formEditImageElement.classList.add('hidden');
   bodyElement.classList.remove('modal-open');
   imgUploadElement.reset();
-  clearScaleValue();
+  setDefaultValue();
   resetEffects();
 
-  document.removeEventListener('keydown', onClickEscBtn);
-  closeFormElement.removeEventListener('click', onClickBtnClose);
+  document.removeEventListener('keydown', onBtnEscClick);
+  closeFormElement.removeEventListener('click', onBtnCloseClick);
 }
 
 openFormElement.addEventListener('change', openForm);
 
-export {openForm, closeForm, onClickBtnClose, onClickEscBtn};
+export {openForm, closeForm, onBtnCloseClick, onBtnEscClick};

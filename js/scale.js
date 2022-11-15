@@ -13,7 +13,7 @@ const imgDefaultElement = document.querySelector('.img-upload__preview');
 let sizeValue = 100;
 
 // Функция изменения размера фотографии
-const editSize = () => {
+const initListenersEditSize = () => {
 
   makeSmallerElement.addEventListener('click', () => {
     if(sizeValue > MIN_SCALE_RANGE) {
@@ -33,20 +33,20 @@ const editSize = () => {
 };
 
 //Функция установки значения масштаба.
-const getScaleValue = (value) => {
+const setScaleValue = (value) => {
   valueElement.value = `${value}%`;
   imgDefaultElement.style.transform = `scale(${value / 100})`;
 };
 
-getScaleValue(sizeValue);
+setScaleValue(sizeValue);
 
 //Функция очищения значения масштаба.
-const clearScaleValue = () => {
+const setDefaultValue = () => {
   sizeValue = MAX_SCALE_RANGE;
-  getScaleValue(MAX_SCALE_RANGE);
+  setScaleValue(MAX_SCALE_RANGE);
   imgDefaultElement.style.transform = `scale(${sizeValue / 100})`;
 };
 
-editSize();
+initListenersEditSize();
 
-export {clearScaleValue};
+export {setDefaultValue};
