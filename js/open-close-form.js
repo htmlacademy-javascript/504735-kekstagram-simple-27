@@ -8,12 +8,12 @@ const bodyElement = document.querySelector('body');
 const closeFormElement = document.querySelector('#upload-cancel');
 const imgUploadElement = document.querySelector('.img-upload__form');
 
-const onBtnCloseClick = (evt) => {
+const onCloseBtnClick = (evt) => {
   evt.preventDefault();
   closeForm();
 };
 
-const onBtnEscClick = (evt) => {
+const onEscBtnClick = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     const hasHiddenPopup = document.querySelector('.error');
@@ -27,8 +27,8 @@ const openForm = () => {
   formEditImageElement.classList.remove('hidden');
   bodyElement.classList.add('modal-open');
 
-  document.addEventListener('keydown', onBtnEscClick);
-  closeFormElement.addEventListener('click', onBtnCloseClick);
+  document.addEventListener('keydown', onEscBtnClick);
+  closeFormElement.addEventListener('click', onCloseBtnClick);
 };
 
 function closeForm() {
@@ -38,10 +38,10 @@ function closeForm() {
   setDefaultValue();
   resetEffects();
 
-  document.removeEventListener('keydown', onBtnEscClick);
-  closeFormElement.removeEventListener('click', onBtnCloseClick);
+  document.removeEventListener('keydown', onEscBtnClick);
+  closeFormElement.removeEventListener('click', onCloseBtnClick);
 }
 
 openFormElement.addEventListener('change', openForm);
 
-export {openForm, closeForm, onBtnCloseClick, onBtnEscClick};
+export {openForm, closeForm, onCloseBtnClick, onEscBtnClick};
