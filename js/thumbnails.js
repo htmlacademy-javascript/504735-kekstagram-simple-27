@@ -6,7 +6,7 @@ const userPictureTemplate = document.querySelector('#picture')
 const photosListFragment = document.createDocumentFragment();
 const imgFiltersElement = document.querySelector('.img-filters');
 
-const showThumbnails = (photo) => {
+const renderThumbnails = (photo) => {
   photo.forEach(({url, comments, likes}) => {
     const photoElement = userPictureTemplate.cloneNode(true);
     photoElement.querySelector('.picture__img').src = url;
@@ -19,4 +19,4 @@ const showThumbnails = (photo) => {
   imgFiltersElement.classList.remove('img-filters--inactive');
 };
 
-export {showThumbnails};
+export {renderThumbnails};
